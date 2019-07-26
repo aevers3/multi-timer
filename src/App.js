@@ -12,10 +12,12 @@ class App extends React.Component {
   }
 
   createClock = () => {
-    const arr = ['clock'];
+    const arr = [{'clockID': 1}];
     for (let i = 0; i < this.state.numOfClocks; i++) {
-      arr.push('clock')
+      // Iterate and set a different ID for each clock in array
+      arr.push({'clockID': (i + 2)})
     }
+    // Set state to reflect number of clocks and clockID for each.
     this.setState({
       numOfClocks: this.state.numOfClocks + 1,
       clocksArr: arr

@@ -2,6 +2,7 @@ import React from 'react';
 import TimerInput from "../TimerInput";
 import Timer from '../Timer';
 import StartButton from '../StartButton';
+import StopButton from '../StopButton';
 import ClockName from '../ClockName';
 import './style.css';
 
@@ -12,15 +13,14 @@ class Clock extends React.Component {
       seconds: '00',
       minutes: '00'
     }
-    let secondsRemaining;
-
-    let intervalHandle;
-
+    
     this.handleChange = this.handleChange.bind(this);
 
     this.startCountdown = this.startCountdown.bind(this);
 
     this.tick = this.tick.bind(this);
+
+    this.stopCountdown = this.stopCountdown.bind(this);
   }
   
   handleChange(event) {
@@ -72,6 +72,15 @@ class Clock extends React.Component {
     this.intervalHandle = setInterval(this.tick, 1000);
   }
 
+  stopCountdown () {
+    console.log('stop hit')
+    clearInterval(this.intervalHandle);
+  }
+
+  // removeClock() {
+  //   clearInterval(this.intervalHandle);
+  // }
+
 
   render() {
     if (this.state.minutes !== '00' || this.state.seconds !== '00') {
@@ -81,6 +90,7 @@ class Clock extends React.Component {
         <TimerInput minutes={this.state.minutes} seconds={this.state.seconds} handleChange={this.handleChange} />
         <Timer minutes={this.state.minutes} seconds={this.state.seconds} />
         <StartButton startCountdown={this.startCountdown} />
+        <StopButton stopCountdown={this.stopCountdown} />
       </div>
     )
   } else {

@@ -33,7 +33,7 @@ class ClockName extends React.Component {
             return (
                 <>
                     <span> {this.state.clockName} </span>
-                    <button onClick={this.renameClock}>Rename Clock</button>
+                    {/* <button onClick={this.renameClock}>Rename Clock</button> */}
                 </>
             )
         } else {
