@@ -74,14 +74,24 @@ class Clock extends React.Component {
 
 
   render() {
-    return (
-      <div className='clock'>
+    if (this.state.minutes !== '00' || this.state.seconds !== '00') {
+      return (
+        <div className='clock'>
         <ClockName />
         <TimerInput minutes={this.state.minutes} seconds={this.state.seconds} handleChange={this.handleChange} />
         <Timer minutes={this.state.minutes} seconds={this.state.seconds} />
         <StartButton startCountdown={this.startCountdown} />
       </div>
     )
+  } else {
+    return (
+      <div className='clock'>
+      <ClockName />
+      <TimerInput minutes={this.state.minutes} seconds={this.state.seconds} handleChange={this.handleChange} />
+      <Timer minutes={this.state.minutes} seconds={this.state.seconds} />
+    </div>
+  )
+  }
   }
 }
 
